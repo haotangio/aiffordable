@@ -1,14 +1,13 @@
-import {Box, TextField} from "@mui/material";
+import {Button, Stack, TextField} from "@mui/material";
 
 export function KickOffForm() {
   return (
-    <Box sx={{
-      '& .MuiTextField-root': { m: 1 },
-    }}>
-      <TextField label="Full Name" fullWidth />
-      <TextField label="Email" fullWidth />
-      <TextField label="Password" fullWidth />
-      <TextField label="Confirm Password" fullWidth />
-    </Box>
+    <Stack direction="column" spacing={2}>
+      <TextField label="Full Name" />
+      <TextField label="Email" />
+      <TextField label="Password" />
+      <TextField label="Confirm Password" />
+      <Button variant="contained">Submit</Button>
+    </Stack>
   )
 }
