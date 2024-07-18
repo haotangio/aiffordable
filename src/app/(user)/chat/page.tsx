@@ -4,7 +4,7 @@ import {Box, Container} from "@mui/material";
 import Toolbar from "@mui/material/Toolbar";
 import {PromptInput} from "@aiffordable/chat/components/PromptInput";
 import {ChatMessageList} from "@aiffordable/chat/components";
-import {create} from "../../actions";
+import {askChatGPT} from "../../actions";
 
 export default function ChatPage() {
   return (
@@ -14,7 +14,10 @@ export default function ChatPage() {
         <Box sx={{flexGrow: 1}}>
           <ChatMessageList />
         </Box>
-        <PromptInput onSubmit={create} />
+        <PromptInput onSubmit={async ({message}) => {
+          const {response} = await askChatGPT({message});
+          console.log('response', response);
+        }} />
       </Container>
     </Box>
   );
