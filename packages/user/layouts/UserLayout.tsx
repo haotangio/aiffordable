@@ -17,18 +17,10 @@ import Typography from '@mui/material/Typography';
 
 const drawerWidth = 240;
 
-interface Props extends Readonly<{
+export function UserLayout(props: Readonly<{
   children: React.ReactNode;
-}> {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * Remove this when copying and pasting into your project.
-   */
-  window?: () => Window;
-}
-
-export function UserLayout(props: Props) {
-  const { window, children } = props;
+}>) {
+  const { children } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
 
@@ -109,9 +101,6 @@ export function UserLayout(props: Props) {
     </Box>
   );
 
-  // Remove this const when copying and pasting into your project.
-  const container = window !== undefined ? () => window().document.body : undefined;
-
   return (
     <Box sx={{ display: 'flex' }}>
       <AppBar
@@ -145,7 +134,6 @@ export function UserLayout(props: Props) {
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
-          container={container}
           variant="temporary"
           open={mobileOpen}
           onTransitionEnd={handleDrawerTransitionEnd}
