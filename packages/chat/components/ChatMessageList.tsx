@@ -1,5 +1,6 @@
 import * as React from "react";
 import {Box, Stack} from "@mui/material";
+import Markdown from 'react-markdown';
 
 export function ChatMessageList({messages}) {
   return (
@@ -7,11 +8,9 @@ export function ChatMessageList({messages}) {
       {messages.map(({message}, index) => (
         <Box key={index} sx={{
           // textAlign: index % 2 === 0 ? 'left' : 'right',
-          backgroundColor: index % 2 === 0 ? 'inherit' : 'grey.100',
+          backgroundColor: index % 2 === 1 ? 'inherit' : 'grey.100',
         }}>
-          <p>
-            {message}
-          </p>
+          <Markdown>{message}</Markdown>
         </Box>
       ))}
     </Stack>
