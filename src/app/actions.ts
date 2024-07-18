@@ -1,39 +1,8 @@
-'use server'
-import OpenAI from "openai";
+'use server';
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// export {askChatGPT} from '@aiffordable/chat/actions';
+import * as actions from '@aiffordable/chat/actions';
 
 export async function askChatGPT({message}) {
-  const messages = [{role: "user", content: message}];
-
-  try {
-    const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages,
-    });
-
-    return {response: response.choices[0].message.content};
-  } catch (e) {
-    console.error(e);
-  }
+  return actions.askChatGPT({message});
 }
-
-// example resp
-// {
-//   id: 'chatcmpl-9mLkNPu8jg38xaA2TznwS2QJApXyT',
-//     object: 'chat.completion',
-//   created: 1721310367,
-//   model: 'gpt-3.5-turbo-0125',
-//   choices: [
-//   {
-//     index: 0,
-//     message: [Object],
-//     logprobs: null,
-//     finish_reason: 'stop'
-//   }
-// ],
-//   usage: { prompt_tokens: 21, completion_tokens: 372, total_tokens: 393 },
-//   system_fingerprint: null
-// }
