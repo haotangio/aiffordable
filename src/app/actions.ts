@@ -1,8 +1,8 @@
 'use server';
 
-// export {askChatGPT} from '@aiffordable/chat/actions';
-import * as actions from '@aiffordable/chat/actions';
+import * as chatServices from '@aiffordable/chat/services';
 
 export async function askChatGPT({message}) {
-  return actions.askChatGPT({message});
+  const msgContent = await chatServices.askChatGPT({message});
+  return { message: msgContent };
 }

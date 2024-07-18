@@ -13,9 +13,9 @@ export function ChatWindow() {
         <ChatMessageList messages={messages} />
       </Box>
       <PromptInput onSubmit={async ({message}) => {
-        const {response} = await askChatGPT({message});
-        console.log(response);
-        setMessages([...messages, {message: response}]);
+        const resp = await askChatGPT({message});
+        console.log(resp);
+        setMessages([...messages, {message: resp.message}]);
       }} />
     </Container>
   )

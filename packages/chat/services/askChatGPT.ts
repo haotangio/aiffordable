@@ -4,20 +4,19 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+const MODEL = 'gpt-4o';
+// const MODEL = 'gpt-3.5-turbo';
+
 export async function askChatGPT({message}) {
   const messages = [{role: "user", content: message}];
 
-  try {
-    const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages,
-    });
+  const response = await openai.chat.completions.create({
+    model: MODEL,
+    messages,
+  });
 
-    console.log(response.choices[0].message.content);
-    return {response: response.choices[0].message.content};
-  } catch (e) {
-    console.error(e);
-  }
+  console.log(response.choices[0].message.content);
+  return response.choices[0].message.content;
 }
 
 // example resp

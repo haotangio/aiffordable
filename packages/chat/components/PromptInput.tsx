@@ -14,7 +14,7 @@ export function PromptInput({onSubmit}) {
         endAdornment={
           <InputAdornment position="end">
             <IconButton onClick={(e) => {
-              onSubmit({message: 'How to publish a book on amazon as indenpendent author?'});
+              onSubmit({message: 'How to publish a book on amazon as independent author?'});
             }}>
               <SendIcon />
             </IconButton>

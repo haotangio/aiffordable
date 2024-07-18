@@ -6,10 +6,12 @@ export function ChatMessageList({messages}) {
     <Stack sx={{height: '100%', overflowY: 'scroll'}}>
       {messages.map(({message}, index) => (
         <Box key={index} sx={{
-          textAlign: index % 2 === 0 ? 'left' : 'right',
+          // textAlign: index % 2 === 0 ? 'left' : 'right',
           backgroundColor: index % 2 === 0 ? 'inherit' : 'grey.100',
         }}>
-          {message}
+          <p>
+            {message}
+          </p>
         </Box>
       ))}
     </Stack>
