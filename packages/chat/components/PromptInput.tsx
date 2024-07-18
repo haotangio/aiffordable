@@ -7,23 +7,36 @@ interface Props {
   onSubmit: ({message}: {message: string}) => unknown;
 }
 export function PromptInput({onSubmit}: Props) {
+  const [message, setMessage] = React.useState('');
+
+  const handleFormSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    if (message) {
+      onSubmit({message});
+      setMessage('');
+    }
+  }
+
   return (
-    <FormControl sx={{ m: 1 }} variant="outlined" fullWidth hiddenLabel>
-      <Input
-        fullWidth
-        placeholder="Type something ..."
-        type={'textarea'}
-        multiline
-        endAdornment={
-          <InputAdornment position="end">
-            <IconButton onClick={(e) => {
-              onSubmit({message: 'How to publish a book on amazon as independent author?'});
-            }}>
-              <SendIcon />
-            </IconButton>
-          </InputAdornment>
-        }
-      />
-    </FormControl>
+    <form onSubmit={handleFormSubmit}>
+      <FormControl sx={{ m: 1 }} variant="outlined" fullWidth hiddenLabel>
+        <Input
+          fullWidth
+          placeholder="Type something ..."
+          type={'textarea'}
+          multiline
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton type="submit" color="primary">
+                <SendIcon />
+              </IconButton>
+            </InputAdornment>
+          }
+        />
+      </FormControl>
+    </form>
   );
 }

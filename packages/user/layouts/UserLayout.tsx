@@ -105,7 +105,7 @@ export function UserLayout(props: Readonly<{
     <Box sx={{ display: 'flex' }}>
       <AppBar
         position="fixed"
-        color="transparent"
+        color="inherit"
         elevation={0}
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
@@ -130,7 +130,6 @@ export function UserLayout(props: Readonly<{
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders"
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer

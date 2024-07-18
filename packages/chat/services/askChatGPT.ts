@@ -4,8 +4,8 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const MODEL = 'gpt-4o';
-// const MODEL = 'gpt-3.5-turbo';
+// const MODEL = 'gpt-4o';
+const MODEL = 'gpt-3.5-turbo';
 
 export async function askChatGPT({message}: {message: string}) {
   const response = await openai.chat.completions.create({
@@ -13,7 +13,6 @@ export async function askChatGPT({message}: {message: string}) {
     messages: [{role: "user", content: message}],
   });
 
-  console.log(response.choices[0].message.content);
   return response.choices[0].message.content;
 }
 

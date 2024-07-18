@@ -7,8 +7,8 @@ export function ChatMessageList({messages}: {messages: {message: string}[]}) {
     <Stack sx={{height: '100%', overflowY: 'scroll'}}>
       {messages.map(({message}, index) => (
         <Box key={index} sx={{
-          // textAlign: index % 2 === 0 ? 'left' : 'right',
-          backgroundColor: index % 2 === 1 ? 'inherit' : 'grey.100',
+          paddingX: 1,
+          backgroundColor: index % 2 === 0 ? 'grey.100' : 'inherit',
         }}>
           <Markdown>{message}</Markdown>
         </Box>
