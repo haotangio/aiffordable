@@ -11,7 +11,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MailIcon from '@mui/icons-material/Mail';
 import Toolbar from '@mui/material/Toolbar';
-import {Navbar} from "@aiffordable/admin/components";
+import {Navbar} from "../components";
 
 const drawerWidth = 240;
 
@@ -25,7 +25,7 @@ interface Props extends Readonly<{
   window?: () => Window;
 }
 
-export function AdminLayout(props: Props) {
+export function UserLayout(props: Props) {
   const { window, children } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
@@ -50,33 +50,7 @@ export function AdminLayout(props: Props) {
       <Toolbar />
       <Divider />
       <List>
-        {['Users', 'AI Tools'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['General Settings', 'Email settings'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['Plugins', 'About'].map((text, index) => (
+        {['Chat GPT 3.5', 'Chat GPT 4', 'Claude 2', 'Gemini 3', 'Dall-E 3', 'Sora'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -131,7 +105,7 @@ export function AdminLayout(props: Props) {
       </Box>
       <Box
         component="main"
-        sx={{ flexGrow: 1, px: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+        sx={{ flexGrow: 1, width: { sm: `calc(100% - ${drawerWidth}px)` }, minHeight: '100vh' }}
       >
         <Toolbar />
         {children}

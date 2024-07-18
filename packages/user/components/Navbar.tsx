@@ -20,7 +20,7 @@ export function Navbar({handleDrawerToggle}) {
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Administration
+          Aiffordable
         </Typography>
         <LoginUserControl />
       </Toolbar>
