@@ -3,7 +3,10 @@ import {FormControl, Input, InputAdornment} from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import SendIcon from "@mui/icons-material/Send";
 
-export function PromptInput({onSubmit}) {
+interface Props {
+  onSubmit: ({message}: {message: string}) => unknown;
+}
+export function PromptInput({onSubmit}: Props) {
   return (
     <FormControl sx={{ m: 1 }} variant="outlined" fullWidth hiddenLabel>
       <Input

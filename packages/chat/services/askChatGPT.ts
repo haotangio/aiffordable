@@ -7,12 +7,10 @@ const openai = new OpenAI({
 const MODEL = 'gpt-4o';
 // const MODEL = 'gpt-3.5-turbo';
 
-export async function askChatGPT({message}) {
-  const messages = [{role: "user", content: message}];
-
+export async function askChatGPT({message}: {message: string}) {
   const response = await openai.chat.completions.create({
     model: MODEL,
-    messages,
+    messages: [{role: "user", content: message}],
   });
 
   console.log(response.choices[0].message.content);
