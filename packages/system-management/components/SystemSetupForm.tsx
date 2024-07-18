@@ -1,6 +1,6 @@
 import {Button, Stack, TextField} from "@mui/material";
 
-export function KickOffForm() {
+export function SystemSetupForm() {
   return (
     <Stack direction="column" spacing={2}>
       <TextField label="Full Name" />

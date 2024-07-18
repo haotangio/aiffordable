@@ -17,6 +17,8 @@ import Typography from '@mui/material/Typography';
 
 const drawerWidth = 240;
 
+const aiTools = ['Chat GPT 3.5', 'Chat GPT 4', 'Claude 2', 'Gemini 3', 'Dall-E 3', 'Sora'];
+
 export function UserLayout(props: Readonly<{
   children: React.ReactNode;
 }>) {
@@ -48,7 +50,7 @@ export function UserLayout(props: Readonly<{
       </Toolbar>
       <Divider />
       <List>
-        {['Chat GPT 3.5', 'Chat GPT 4', 'Claude 2', 'Gemini 3', 'Dall-E 3', 'Sora'].map((text, index) => (
+        {aiTools.map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
