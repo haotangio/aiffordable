@@ -12,10 +12,8 @@ export async function generateImageWithDallE3({message}: {message: string}): Pro
     model: MODEL,
     prompt: message,
     n: 1,
-    size: "1024x1024",
+    size: "1024x1792",
   });
-
-  console.log(response.data[0]);
 
   return response.data[0].url as string;
 }

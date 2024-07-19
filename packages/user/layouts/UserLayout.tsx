@@ -43,12 +43,15 @@ export function UserLayout(props: Readonly<{
 
   const drawer = (
     <Box>
-      <Toolbar>
-        <Typography variant="h6">
-          Aiffordable
-        </Typography>
-      </Toolbar>
-      <Divider />
+      <AppBar color="inherit" elevation={0} position="sticky" sx={{ left: 0, width: `${drawerWidth}px`}}>
+        <Toolbar>
+          <Typography variant="h6">
+            Aiffordable
+          </Typography>
+        </Toolbar>
+        <Divider />
+      </AppBar>
+      {/*<Toolbar />*/}
       <List>
         {aiTools.map((text, index) => (
           <ListItem key={text} disablePadding>
