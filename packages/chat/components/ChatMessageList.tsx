@@ -5,16 +5,6 @@ import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import {dark} from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export function ChatMessageList({messages}: {messages: {message: string}[]}) {
-  // const msg = `Here is some JavaScript code:
-  //
-  // ~~~jsx
-  // function ChatMessageList({messages}: {messages: {message: string}[]}) {
-  // console.log('It works!')
-  // return (<div>ChatMessageList</div>);
-  // }
-  // ~~~
-  // `
-
   return (
     <Stack sx={{height: '100%', overflowY: 'scroll'}}>
       {messages.map(({message}, index) => (
