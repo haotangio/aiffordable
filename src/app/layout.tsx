@@ -1,6 +1,6 @@
 'use client';
 import { Inter } from "next/font/google";
-import {AiffordableRootLayout} from "@aiffordable/design-system";
+import {AiffordableRootLayout} from "@libs/design-system";
 
 const inter = Inter({ subsets: ["latin"] });
 

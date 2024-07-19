@@ -1,6 +1,6 @@
-import {Box, Button, Stack, Typography} from "@mui/material";
+import {Button, Stack, Typography} from "@mui/material";
 import Link from "next/link";
-import {PaperCard} from "@aiffordable/design-system/components";
+import {PaperCard} from "@libs/design-system/components";
 
 export default function Home() {
   return (

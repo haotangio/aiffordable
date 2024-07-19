@@ -1,8 +1,8 @@
 import {useState} from "react";
 import {Box, Container} from "@mui/material";
 import {askChatGPT} from "../actions";
-import {ChatMessageList} from "../components/ChatMessageList";
-import {PromptInput} from "../components/PromptInput";
+import {ChatMessageList} from "./ChatMessageList";
+import {PromptInput} from "./PromptInput";
 
 export function ChatWindow() {
   const [messages, setMessages] = useState<{message: string}[]>([]);

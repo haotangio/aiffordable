@@ -1,3 +1,3 @@
-import {FullscreenCenterLayout} from "@aiffordable/design-system/layouts";
+import {FullscreenCenterLayout} from "@libs/design-system/layouts";
 
 export default FullscreenCenterLayout;
