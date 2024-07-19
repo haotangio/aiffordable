@@ -1,6 +1,6 @@
-import {useCallback, useState} from "react";
+import {useState} from "react";
 import {Box, Container} from "@mui/material";
-import {askChatGPT} from "../../../src/app/actions";
+import {askChatGPT} from "../actions";
 import {ChatMessageList} from "../components/ChatMessageList";
 import {PromptInput} from "../components/PromptInput";
 
@@ -9,8 +9,8 @@ export function ChatWindow() {
 
   const handlePromptSubmission = async ({message}: {message: string}) => {
     appendMessage(message);
-    const resp = await askChatGPT({message});
-    appendMessage(resp.message as string);
+    const respMsg = await askChatGPT({message});
+    appendMessage(respMsg);
   }
 
   const appendMessage = (message: string) => {
