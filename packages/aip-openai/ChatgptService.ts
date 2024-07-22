@@ -1,19 +1,25 @@
 import OpenAI from "openai";
+import {AIToolName, AIResponse, AIService} from "@aiffordable/ai-resource";
+import {createOpenAIClient} from "./openAIClient";
 
-export class ChatgptService implements PromptChatContract {
-  private readonly client: OpenAI;
-  private readonly modelId: string;
+export class ChatgptService implements AIService {
+  private client: OpenAI;
 
-  constructor(client: OpenAI, modelId: string) {
-    this.client = client;
-    this.modelId = modelId;
+  constructor(param: { apiKey: string }) {
+    this.client = createOpenAIClient({apiKey: param.apiKey});
   }
 
-  async replyPrompt(prompt: string): Promise<string> {
-    return this.client.chat(this.modelId, prompt);
-  }
+  name: AIToolName = "openai";
 
-  async replyPromptInThread(prompt: string): Promise<string> {
-    return this.client.chat(this.modelId, prompt, {is_thread: true});
+  async answerPrompt(prompt: string, options: { model: string }): Promise<AIResponse> {
+    const response = await this.client.chat.completions.create({
+      model: options.model,
+      messages: [{role: "user", content: prompt}],
+    });
+
+    const content = response.choices[0].message.content as string;
+    return {
+      content,
+    }
   }
 }

@@ -1,15 +1,16 @@
 import {useState} from "react";
 import {Box, Container} from "@mui/material";
-import {askChatGPT} from "../actions";
 import {ChatMessageList} from "./ChatMessageList";
 import {PromptInput} from "./PromptInput";
+import {submitPrompt} from "@libs/chat/server-actions/chatActions";
 
 export function ChatWindow() {
   const [messages, setMessages] = useState<{message: string}[]>([]);
 
   const handlePromptSubmission = async ({message}: {message: string}) => {
     appendMessage(message);
-    const respMsg = await askChatGPT({message});
+    // const respMsg = await askChatGPT({message});
+    const respMsg = await submitPrompt(message, {aiName: 'openai', model: 'gpt-3.5-turbo'});
     appendMessage(respMsg);
   }
 
