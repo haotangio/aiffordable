@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 import * as React from "react";
 import {Box, Stack} from "@mui/material";
 import ReactMarkdown from 'react-markdown';
@@ -22,12 +23,13 @@ export function ChatMessageList({messages}: {messages: MessageBody[]}) {
               children={content}
               components={{
                 code(props) {
-                  const {children, className, node, ...rest} = props
+                  const {children, className, node, ref, ...rest} = props
                   const match = /language-(\w+)/.exec(className || '')
                   return match ? (
                     <SyntaxHighlighter
                       {...rest}
                       PreTag="div"
+                      ref={ref as React.LegacyRef<SyntaxHighlighter>}
                       children={String(children).replace(/\n$/, '')}
                       language={match[1]}
                       style={dark}
