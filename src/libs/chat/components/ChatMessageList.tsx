@@ -4,36 +4,45 @@ import ReactMarkdown from 'react-markdown';
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import {dark} from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-export function ChatMessageList({messages}: {messages: {message: string}[]}) {
+export interface MessageBody {
+  content?: string;
+  url?: string;
+}
+export function ChatMessageList({messages}: {messages: MessageBody[]}) {
   return (
     <Stack sx={{height: '100%', overflowY: 'scroll'}}>
-      {messages.map(({message}, index) => (
+      {messages.map(({content, url}, index) => (
         <Box key={index} sx={{
           paddingX: 1,
           backgroundColor: index % 2 === 0 ? 'grey.100' : 'inherit',
         }}>
-          <ReactMarkdown
-            children={message}
-            components={{
-              code(props) {
-                const {children, className, node, ...rest} = props
-                const match = /language-(\w+)/.exec(className || '')
-                return match ? (
-                  <SyntaxHighlighter
-                    {...rest}
-                    PreTag="div"
-                    children={String(children).replace(/\n$/, '')}
-                    language={match[1]}
-                    style={dark}
-                  />
-                ) : (
-                  <code {...rest} className={className}>
-                    {children}
-                  </code>
-                )
-              }
-            }}
-          />
+          {content && (
+            <ReactMarkdown
+              children={content}
+              components={{
+                code(props) {
+                  const {children, className, node, ...rest} = props
+                  const match = /language-(\w+)/.exec(className || '')
+                  return match ? (
+                    <SyntaxHighlighter
+                      {...rest}
+                      PreTag="div"
+                      children={String(children).replace(/\n$/, '')}
+                      language={match[1]}
+                      style={dark}
+                    />
+                  ) : (
+                    <code {...rest} className={className}>
+                      {children}
+                    </code>
+                  )
+                }
+              }}
+            />
+          )}
+          {url && (
+            <img src={url} alt="Generated image" />
+          )}
         </Box>
       ))}
     </Stack>

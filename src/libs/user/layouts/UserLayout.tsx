@@ -14,10 +14,27 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import Link from "next/link";
 
 const drawerWidth = 240;
 
-const aiTools = ['Chat GPT 3.5', 'Chat GPT 4', 'Claude 2', 'Gemini 3', 'Dall-E 3', 'Sora'];
+const aiTools = [
+  {
+    id: 'gpt-4o',
+    label: 'Chat GPT-4o',
+    logo: '/static/img/logos/openai-logomark.svg',
+  },
+  {
+    id: 'gpt-3.5-turbo',
+    label: 'Chat GPT-3.5',
+    logo: '/static/img/logos/openai-logomark.svg',
+  },
+  {
+    id: 'dall-e-3',
+    label: 'Image Gen DALL-E-3',
+    logo: '/static/img/logos/openai-logomark.svg',
+  },
+];
 
 export function UserLayout(props: Readonly<{
   children: React.ReactNode;
@@ -51,17 +68,21 @@ export function UserLayout(props: Readonly<{
         </Toolbar>
         <Divider />
       </AppBar>
-      {/*<Toolbar />*/}
       <List>
-        {aiTools.map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
+        {aiTools.map(({id, label, logo}) => (
+          <Link href={`/chat?provider=openai&model=${id}`} key={id} style={{
+            textDecoration: 'none',
+            color: 'inherit',
+          }}>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <img height="24" width="24" src={logo} alt="AI tool logo" />
+                </ListItemIcon>
+                <ListItemText primary={label} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
         ))}
       </List>
       <Divider />

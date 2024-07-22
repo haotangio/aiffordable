@@ -33,7 +33,8 @@ export class AIUsageService implements PromptChatContract, ImageGenerationContra
     return aiService.answerPrompt(prompt, {model: opts.model});
   }
 
-  generateImage(prompt: string): Promise<string | Blob> {
-    return Promise.resolve('undefined');
+  generateImage(prompt: string, opts: PromptOptions) {
+    const aiService = this.aiServiceOfName('openai');
+    return aiService.generateImage(prompt, {model: opts.model});
   }
 }

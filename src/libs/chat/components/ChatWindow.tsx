@@ -1,21 +1,24 @@
 import {useState} from "react";
 import {Box, Container} from "@mui/material";
-import {ChatMessageList} from "./ChatMessageList";
-import {PromptInput} from "./PromptInput";
+import {useSearchParams} from 'next/navigation';
 import {submitPrompt} from "@libs/chat/server-actions/chatActions";
+import {ChatMessageList, MessageBody} from "./ChatMessageList";
+import {PromptInput} from "./PromptInput";
 
 export function ChatWindow() {
-  const [messages, setMessages] = useState<{message: string}[]>([]);
+  const [messages, setMessages] = useState<MessageBody[]>([]);
+  const searchParams = useSearchParams();
 
   const handlePromptSubmission = async ({message}: {message: string}) => {
-    appendMessage(message);
-    // const respMsg = await askChatGPT({message});
-    const respMsg = await submitPrompt(message, {aiName: 'openai', model: 'gpt-3.5-turbo'});
-    appendMessage(respMsg);
+    appendMessage({content: message});
+    const provider = searchParams.get('provider') as string;
+    const model = searchParams.get('model') as string;
+    const {content, url} = await submitPrompt(message, {provider: provider, model});
+    appendMessage({content, url});
   }
 
-  const appendMessage = (message: string) => {
-    setMessages(prevMessages => [...prevMessages, {message}]);
+  const appendMessage = (message: MessageBody) => {
+    setMessages(prevMessages => [...prevMessages, message]);
   };
 
   return (

@@ -14,5 +14,5 @@ export interface PromptChatContract {
 }
 
 export interface ImageGenerationContract {
-  generateImage: (prompt: string) => Promise<string | Blob>;
+  generateImage: (prompt: string, opts: PromptOptions) => Promise<AIResponse>;
 }

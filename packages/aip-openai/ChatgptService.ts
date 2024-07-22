@@ -22,4 +22,17 @@ export class ChatgptService implements AIService {
       content,
     }
   }
+
+  async generateImage(prompt: string, options: { model: string }): Promise<AIResponse> {
+    const response = await this.client.images.generate({
+      model: options.model,
+      prompt,
+      n: 1,
+      size: "1024x1792",
+    });
+
+    return {
+      url: response.data[0].url as string
+    };
+  }
 }
