@@ -1,4 +1,4 @@
 'use client';
-import {UserLayout} from "@aiffordable/user/layouts";
+import {UserLayout} from "@libs/user/layouts";
 
 export default UserLayout;

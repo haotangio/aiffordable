@@ -1,6 +1,6 @@
 import {Typography} from "@mui/material";
-import {PaperCard} from "@aiffordable/design-system/components";
-import {ForgetPasswordForm} from "@aiffordable/auth/components";
+import {PaperCard} from "@libs/design-system/components";
+import {ForgetPasswordForm} from "@libs/auth/components";
 
 export default function ForgotPasswordPage() {
   return (

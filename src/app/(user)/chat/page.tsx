@@ -2,7 +2,7 @@
 import * as React from "react";
 import {Box} from "@mui/material";
 import Toolbar from "@mui/material/Toolbar";
-import {ChatWindow} from "@aiffordable/chat/components";
+import {ChatWindow} from "@libs/chat/components";
 
 export const maxDuration = 60;
 
