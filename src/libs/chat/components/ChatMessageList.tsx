@@ -15,6 +15,7 @@ export function ChatMessageList({messages}: {messages: MessageBody[]}) {
         <Box key={index} sx={{
           paddingX: 1,
           backgroundColor: index % 2 === 0 ? 'grey.100' : 'inherit',
+          mb: 3,
         }}>
           {content && (
             <ReactMarkdown
