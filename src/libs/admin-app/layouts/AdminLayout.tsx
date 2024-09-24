@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import SettingsIcon from '@mui/icons-material/Settings';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -74,11 +73,6 @@ export function AdminLayout(props: Readonly<{
           <Typography variant="h6">
             Admin
           </Typography>
-          {user.role === 'admin' && (
-            <IconButton size="small">
-              <SettingsIcon sx={{fontSize: 'inherit'}} />
-            </IconButton>
-          )}
         </Toolbar>
         <Divider />
       </AppBar>
@@ -124,7 +118,7 @@ export function AdminLayout(props: Readonly<{
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Chat GPT 4
+            Users
           </Typography>
         </Toolbar>
       </AppBar>
@@ -163,7 +157,10 @@ export function AdminLayout(props: Readonly<{
         component="main"
         sx={{ flexGrow: 1, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
-        {children}
+        <Toolbar />
+        <Box p={3}>
+          {children}
+        </Box>
       </Box>
     </Box>
   );

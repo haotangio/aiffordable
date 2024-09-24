@@ -15,6 +15,7 @@ export function ChatWindow() {
     const model = searchParams.get('model') as string;
     const {content, url} = await submitPrompt(message, {provider: provider, model});
     appendMessage({content, url});
+    // scroll to the bottom
   }
 
   const appendMessage = (message: MessageBody) => {

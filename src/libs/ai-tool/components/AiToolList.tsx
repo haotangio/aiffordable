@@ -5,8 +5,9 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import List from "@mui/material/List";
+import {AITool} from "../models/AITool";
 
-export function AiToolList({aiTools}: { aiTools: { id: string, label: string, logo: string }[] }) {
+export function AiToolList({aiTools}: { aiTools: AITool[]}) {
   return (
     <List>
       {aiTools.map(({id, label, logo}) => (
@@ -25,5 +26,5 @@ export function AiToolList({aiTools}: { aiTools: { id: string, label: string, lo
         </Link>
       ))}
     </List>
-  )
+  );
 }

@@ -1,5 +1,8 @@
+'use client';
+import {UserList} from "@libs/admin-app/components";
+
 export default function AdminUserListPage() {
   return (
-    <div>Admin user list page</div>
+    <UserList />
   );
 }
