@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {Box, Container} from "@mui/material";
 import {useSearchParams} from 'next/navigation';
-import {submitPrompt} from "@libs/chat/actions";
+import {submitPrompt} from "@libs/chat-app/actions";
 import {ChatMessageList, MessageBody} from "./ChatMessageList";
 import {PromptInput} from "./PromptInput";
 

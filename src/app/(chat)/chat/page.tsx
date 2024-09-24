@@ -2,7 +2,7 @@
 import {Suspense} from "react";
 import {Box} from "@mui/material";
 import Toolbar from "@mui/material/Toolbar";
-import {ChatWindow} from "@libs/chat/components";
+import {ChatWindow} from "@libs/chat-app/components";
 
 export const maxDuration = 60;
 
