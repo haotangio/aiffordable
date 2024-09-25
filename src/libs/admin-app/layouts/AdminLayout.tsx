@@ -5,6 +5,7 @@ import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import BackIcon from '@mui/icons-material/ArrowBack';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Link from "next/link";
@@ -12,6 +13,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import List from "@mui/material/List";
+import {useRouter} from "next/navigation";
 
 const drawerWidth = 240;
 
@@ -47,6 +49,7 @@ export function AdminLayout(props: Readonly<{
   children: React.ReactNode;
 }>) {
   const {user} = useAuth();
+  const router = useRouter();
   const { children } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
@@ -66,10 +69,17 @@ export function AdminLayout(props: Readonly<{
     }
   };
 
+  const backToChatApp = () => {
+    router.push('/chat');
+  };
+
   const drawer = (
     <Box>
       <AppBar color="inherit" elevation={0} position="sticky" sx={{ left: 0, width: `${drawerWidth}px`}}>
-        <Toolbar sx={{display: 'flex', justifyContent: 'space-between'}}>
+        <Toolbar disableGutters>
+          <IconButton onClick={backToChatApp}>
+            <BackIcon />
+          </IconButton>
           <Typography variant="h6">
             Admin
           </Typography>

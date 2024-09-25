@@ -1,6 +1,6 @@
 import {Typography} from "@mui/material";
-import {SystemSetupForm} from "@libs/system/components";
 import {PaperCard} from "@libs/design-system/components";
+import {SystemSetupForm} from "@libs/admin-app/components";
 
 export default function SetupPage() {
   return (

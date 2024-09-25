@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Link from "next/link";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
@@ -8,27 +9,10 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import {AiToolList} from "@libs/ai-tool/components/AiToolList";
+import {AiToolList} from "@libs/ai-tool/components";
+import {AI_TOOLs} from "@libs/ai-tool/models";
 
 const drawerWidth = 240;
-
-const aiTools = [
-  {
-    id: 'gpt-4o',
-    label: 'Chat GPT-4o',
-    logo: '/static/img/logos/openai-logomark.svg',
-  },
-  {
-    id: 'gpt-3.5-turbo',
-    label: 'Chat GPT-3.5',
-    logo: '/static/img/logos/openai-logomark.svg',
-  },
-  {
-    id: 'dall-e-3',
-    label: 'Image Gen DALL-E-3',
-    logo: '/static/img/logos/openai-logomark.svg',
-  },
-];
 
 function useAuth() {
   return {
@@ -71,14 +55,16 @@ export function ChatAppLayout(props: Readonly<{
             Aiffordable
           </Typography>
           {user.role === 'admin' && (
-            <IconButton size="small">
-              <SettingsIcon sx={{fontSize: 'inherit'}} />
-            </IconButton>
+            <Link href="/admin">
+              <IconButton size="small">
+                <SettingsIcon sx={{fontSize: 'inherit'}} />
+              </IconButton>
+            </Link>
           )}
         </Toolbar>
         <Divider />
       </AppBar>
-      <AiToolList aiTools={aiTools} />
+      <AiToolList aiTools={AI_TOOLs} />
       {/*<Divider />*/}
       {/*<List>*/}
       {/*  {['Users', 'AI Tools'].map((text, index) => (*/}
