@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 4000",
+    "migrate": "",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -17,7 +18,7 @@
     "@mui/material": "^5.16.4",
     "@mui/x-data-grid": "^7.10.0",
     "@neondatabase/serverless": "^0.9.5",
-    "@vercel/postgres-kysely": "^0.10.0",
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.33.0",
     "next": "14.2.5",
@@ -31,8 +32,10 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
+    "@types/bcrypt": "^5.0.2",
     "@types/jest": "^29.5.12",
     "@types/node": "^20",
+    "@types/pg": "^8.11.10",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/react-syntax-highlighter": "^15.5.13",

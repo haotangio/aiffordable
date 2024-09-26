@@ -1,19 +1,13 @@
 'use server';
-import {UserFactory, PgUserRepository} from "@aiffordable/workspace-resources";
-import {SystemService} from "../services/SystemService";
+import {validateSystemToken} from "@aiffordable/security/services";
+import {createSystemService} from "../factories/ServiceFactory";
 
 export const createFirstAdmin = async (payload: { token: string, email: string, password: string }) => {
-  const userRepository = new PgUserRepository();
-  const userFactory = new UserFactory(userRepository);
-  const systemService = new SystemService(
-    userRepository,
-    userFactory,
-  );
-  return systemService.createFirstAdmin(
-    {
-      token: payload.token,
-      email: payload.email,
-      password: payload.password
-    }
-  );
+  const isValid = validateSystemToken(payload.token);
+  if (!isValid) {
+    throw new Error('Invalid token');
+  }
+
+  const systemService = await createSystemService();
+  return systemService.createFirstAdmin(payload);
 };

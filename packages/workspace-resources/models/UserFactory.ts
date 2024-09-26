@@ -14,6 +14,6 @@ export class UserFactory {
       throw new Error('User already exists');
     }
 
-    return new User(email, password, 'admin');
+    return User.newAdmin(email, password);
   }
 }
