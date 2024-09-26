@@ -1,5 +1,6 @@
 import {createDb, DrizzleUserRepository, UserFactory} from "@aiffordable/workspace-resources";
 import {SystemService} from "../services/SystemService";
+import {BcryptPasswordHasher} from "@aiffordable/workspace-resources/utils";
 
 const dbConfig = {
   host: process.env.POSTGRES_HOST,
@@ -21,7 +22,8 @@ const dbConfig = {
 export async function createSystemService() {
   const db = await createDb(dbConfig);
   const userRepository = new DrizzleUserRepository(db);
-  const userFactory = new UserFactory(userRepository);
+  const passwordHasher = new BcryptPasswordHasher(8);
+  const userFactory = new UserFactory(userRepository, passwordHasher);
   return new SystemService(
     userRepository,
     userFactory,

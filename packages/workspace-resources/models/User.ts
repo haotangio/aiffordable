@@ -1,3 +1,5 @@
+import {PasswordHasher} from "./PasswordHasher";
+
 type UserRole = 'admin' | 'user';
 
 // type UserConstructAttributes = Pick<User, 'email' | 'password' | 'role'> & { id?: number };
@@ -8,11 +10,7 @@ export class User {
   password: string;
   role: UserRole;
 
-  constructor(email: string, password: string, role: UserRole) {
-    this.setEmail(email);
-    this.setPassword(password);
-    this.role = role;
-  }
+  private constructor() {}
 
   // static buildFromAttributes(values: UserConstructAttributes) {
   //   const user = new User(values.email, values.password, values.role);
@@ -22,8 +20,14 @@ export class User {
   //   return user;
   // }
 
-  public static newAdmin(email: string, password: string) {
-    return new User(email, password, 'admin');
+  public static newAdmin(email: string, password: string, passwordHasher: PasswordHasher) {
+    const user = new User();
+    user.setEmail(email);
+
+    user.assertValidPassword(password);
+    user.password = passwordHasher.hashPassword(password);
+
+    return user;
   }
 
   private assertValidEmail(email: string) {
@@ -36,16 +40,10 @@ export class User {
     if (password.length < 8) {
       throw new Error('Password must be at least 8 characters long');
     }
-  }
 
-  private setPassword(password: string) {
-    this.assertValidPassword(password);
-    this.password = password;
-  }
-
-  public changePassword(newPassword: string) {
-    // Add password change logic here: password must not be same as old password.
-    this.setPassword(newPassword);
+    if (password === '12345678') {
+      throw new Error('Password must not be so simple');
+    }
   }
 
   private setEmail(email: string) {

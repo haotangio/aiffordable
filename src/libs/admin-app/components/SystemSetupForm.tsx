@@ -4,23 +4,28 @@ import {createFirstAdmin} from "@aiffordable/workspace-manager/actions";
 
 export function SystemSetupForm() {
   const onSubmit = async () => {
-    const user = await createFirstAdmin(
-      {
-        token: 'saefsadfasdfsadfdsaf',
-        email: 'haotang.io@gmail.com',
-        password: 'password',
-      }
-    );
-    alert(user.email);
+    try {
+      const user = await createFirstAdmin(
+        {
+          token: 'd1t3ams.com',
+          email: 'haotang.io@gmail.com',
+          password: '12345678',
+        }
+      );
+      alert('User created', user.email);
+    } catch (e) {
+      alert(e.message);
+    }
   };
 
   return (
     <Stack direction="column" spacing={2}>
+      <TextField label="System password" />
       <TextField label="Full Name" />
       <TextField label="Email" />
       <TextField label="Password" />
       <TextField label="Confirm Password" />
-      <Button variant="contained" onClick={onSubmit}>Submit</Button>
+      <Button variant="contained" onClick={onSubmit}>Finish</Button>
     </Stack>
-  )
+  );
 }

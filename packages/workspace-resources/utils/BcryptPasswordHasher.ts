@@ -8,11 +8,11 @@ export class BcryptPasswordHasher implements PasswordHasher {
     this.saltRounds = saltRounds;
   }
 
-  async hashPassword(password: string): Promise<string> {
-    return bcrypt.hash(password, this.saltRounds);
+  hashPassword(password: string): string {
+    return bcrypt.hashSync(password, this.saltRounds);
   }
 
-  async verifyPassword(password: string, hashedPassword: string): Promise<boolean> {
-    return bcrypt.compare(password, hashedPassword);
+  verifyPassword(password: string, hashedPassword: string): boolean {
+    return bcrypt.compareSync(password, hashedPassword);
   }
 }

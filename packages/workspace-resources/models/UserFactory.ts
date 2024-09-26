@@ -1,11 +1,14 @@
 import {User} from "./User";
 import {UserRepository} from "./UserRepository";
+import {PasswordHasher} from "../models/PasswordHasher";
 
 export class UserFactory {
   private userRepository: UserRepository;
+  private passwordHasher: PasswordHasher;
 
-  constructor(userRepository: UserRepository) {
+  constructor(userRepository: UserRepository, passwordHasher: PasswordHasher) {
     this.userRepository = userRepository;
+    this.passwordHasher = passwordHasher;
   }
 
   async buildAdminUser(email: string, password: string): Promise<User> {
@@ -14,6 +17,6 @@ export class UserFactory {
       throw new Error('User already exists');
     }
 
-    return User.newAdmin(email, password);
+    return User.newAdmin(email, password, this.passwordHasher);
   }
 }
