@@ -1,4 +1,4 @@
-import {DrizzleUserRepository, UserFactory, UserRepository} from "@aiffordable/workspace-resources";
+import {DrizzleUserRepository, UserFactory, UserRepository} from "../../security";
 
 interface SetupFirstAdminInput {
   email: string;
@@ -15,6 +15,11 @@ export class SystemService {
   }
 
   async createFirstAdmin({email, password}: SetupFirstAdminInput) {
+    const existingUser = await this.userRepository.findByEmail(email);
+    if (existingUser) {
+      throw new Error('User already exists');
+    }
+
     const createdUser = await this.userFactory.buildAdminUser(email, password);
     return this.userRepository.add(createdUser);
   }

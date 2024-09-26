@@ -1,6 +1,6 @@
-import {createDb, DrizzleUserRepository, UserFactory} from "@aiffordable/workspace-resources";
+import {createDb, DrizzleUserRepository, UserFactory} from "../../security";
 import {SystemService} from "../services/SystemService";
-import {BcryptPasswordHasher} from "@aiffordable/workspace-resources/utils";
+import {BcryptPasswordHasher} from "@aiffordable/security/utils";
 
 const dbConfig = {
   host: process.env.POSTGRES_HOST,

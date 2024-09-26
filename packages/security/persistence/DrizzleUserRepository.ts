@@ -31,4 +31,12 @@ export class DrizzleUserRepository implements UserRepository {
     userEntity.id = userObj.id as number;
     return userEntity;
   }
+
+  async findById(id: number): Promise<User | null> {
+    const result = await this.db.select(userSchema).where({id}).execute();
+    if (result.length === 0) {
+      return null;
+    }
+    return this.toUserEntity(result[0]);
+  }
 }

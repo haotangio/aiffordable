@@ -6,6 +6,7 @@ type UserRole = 'admin' | 'user';
 
 export class User {
   id: number;
+  fullName: string;
   email: string;
   password: string;
   role: UserRole;
@@ -26,6 +27,7 @@ export class User {
 
     user.assertValidPassword(password);
     user.password = passwordHasher.hashPassword(password);
+    user.role = 'admin';
 
     return user;
   }
