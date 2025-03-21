@@ -1,4 +1,6 @@
 import {PasswordHasher} from "./PasswordHasher";
+import {UserCreated} from "./UserCreated";
+import {DomainEventPublisher} from "./DomainEventPublisher";
 
 type UserRole = 'admin' | 'user';
 
@@ -28,6 +30,10 @@ export class User {
     user.assertValidPassword(password);
     user.password = passwordHasher.hashPassword(password);
     user.role = 'admin';
+
+    DomainEventPublisher
+      .instance()
+      .publish(new UserCreated(user));
 
     return user;
   }

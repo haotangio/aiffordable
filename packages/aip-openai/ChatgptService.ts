@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import {AIToolName, AIResponse, AIService} from "@aiffordable/ai-resource";
+import {AIToolName, AIResponse, AIService} from "../ai-access";
 import {createOpenAIClient} from "./openAIClient";
 
 export class ChatgptService implements AIService {

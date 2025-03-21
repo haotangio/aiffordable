@@ -1,4 +1,4 @@
-import {AIToolName, AIService} from "@aiffordable/ai-resource";
+import {AIToolName, AIService} from "../../ai-access";
 import {ToolListingContract,} from "@aiffordable/tool-manager";
 
 export class AICatalogService implements ToolListingContract {

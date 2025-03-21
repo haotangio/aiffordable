@@ -1,4 +1,4 @@
-import {AIToolName, AIService} from "@aiffordable/ai-resource";
+import {AIToolName, AIService} from "../../ai-access";
 import {ImageGenerationContract, PromptChatContract, PromptOptions} from "../contracts";
 
 export class AIUsageService implements PromptChatContract, ImageGenerationContract {

@@ -1,6 +1,6 @@
 import {Typography} from "@mui/material";
-import {PaperCard} from "@libs/design-system/components";
-import {LoginForm} from "../components";
+import {PaperCard} from "@libs/common/design-system";
+import {LoginForm} from "@libs/domain/auth/components";
 
 export function LoginPage() {
   return (

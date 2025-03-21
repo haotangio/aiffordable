@@ -1,6 +1,6 @@
 import {Button, Stack, Typography} from "@mui/material";
 import Link from "next/link";
-import {PaperCard} from "@libs/design-system/components";
+import {PaperCard} from "@libs/common/design-system";
 
 export default function Home() {
   return (

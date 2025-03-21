@@ -1,4 +1,4 @@
-import {AIModelName, AIToolName, AIResponse} from "@aiffordable/ai-resource";
+import {AIModelName, AIToolName, AIResponse} from "../../ai-access";
 
 export interface PromptOptions {
   ai: AIToolName,

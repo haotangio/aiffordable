@@ -11,7 +11,7 @@ export class UserFactory {
     this.passwordHasher = passwordHasher;
   }
 
-  async buildAdminUser(email: string, password: string): Promise<User> {
+  async newAdminUser(email: string, password: string): Promise<User> {
     const existingUser = await this.userRepository.findByEmail(email);
     if (existingUser) {
       throw new Error('User already exists');
