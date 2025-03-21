@@ -1,7 +1,7 @@
 'use client';
 import {Box} from "@mui/material";
 import Toolbar from "@mui/material/Toolbar";
-import {ChatWindow} from "@libs/domain/chat/components/ChatWindow";
+import {ChatWindow} from "@libs/main/chat/components/ChatWindow";
 
 export const maxDuration = 60;
 

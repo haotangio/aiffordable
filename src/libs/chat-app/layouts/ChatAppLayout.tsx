@@ -9,8 +9,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import {AiToolList} from "@libs/domain/ai/components";
-import {AI_TOOLs} from "@libs/domain/ai/models";
+import {AiToolList, AI_TOOLs} from "@libs/main/ai";
 
 const drawerWidth = 240;
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import Paper from '@mui/material/Paper';
-import {User} from "@libs/domain/auth/models";
+import {User} from "@libs/main/auth/models";
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 70 },
