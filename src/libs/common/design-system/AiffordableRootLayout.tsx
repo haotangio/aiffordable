@@ -1,19 +1,21 @@
 import {CssBaseline} from "@mui/material";
-import {ThemeProvider, createTheme} from '@mui/material/styles';
+import {ThemeProvider} from '@mui/material/styles';
+import {AppRouterCacheProvider} from "@mui/material-nextjs/v13-appRouter";
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-
-const defaultTheme = createTheme();
+import {theme} from "./theme";
 
 export function AiffordableRootLayout({children}: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <CssBaseline />
-      {children}
-    </ThemeProvider>
+    <AppRouterCacheProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline/>
+        {children}
+      </ThemeProvider>
+    </AppRouterCacheProvider>
   );
 }
